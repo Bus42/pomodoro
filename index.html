@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pomodoro Clock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div>
+            <span><p id="status">Set your session and break durations and press the clock icon.</p></span>
+        </div>
+        <div>
+            <div class="button" id="startButton"><i class="fa fa-clock-o "></i></div>
+        </div>
+
+        <div id="breakTimer">
+            <span id="minutes"></span>:<span id="seconds"></span>
+        </div>
+        <div class="inputs">
+            <div class="break">
+                <p>Break</p><div class="button" id="lessBreak"><i class="fa fa-minus "></i></div><span id="breakLength"></span><div class="button" id="moreBreak"><i class="fa fa-plus "></i></div>
+            </div>
+            <div class="work">
+                <p>Session </p><div class="button" id="lessWork"><i class="fa fa-minus "></i></div><span id="workLength"></span><div class="button" id="moreWork"><i class="fa fa-plus "></i></div>
+            </div>
+        </div>
+    </div>
+    <audio src="audio/chime.mp3"></audio>
+</body>
+<script src="https://use.fontawesome.com/f342a15139.js"></script>
+<script src="js/script.js"></script>
+</html>
