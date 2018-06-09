@@ -1,17 +1,17 @@
 
-var minutes = 25;
-var breakMinutes = 5;
-var minuteDisplay = document.querySelector('#minutes');
-var secondDisplay = document.querySelector('#seconds');
-var startButton = document.querySelector('#startButton');
-var statusDiv = document.querySelector('#status');
-var lessWork = document.querySelector('#lessWork');
-var moreWork = document.querySelector('#moreWork');
-var lessBreak = document.querySelector('#lessBreak');
-var moreBreak = document.querySelector('#moreBreak') ;
-var workLengthEl = document.querySelector('#workLength');
-var breakLengthEl = document.querySelector('#breakLength');
-var chime = document.querySelector('audio');
+let minutes = 25;
+let breakMinutes = 5;
+const minuteDisplay = document.querySelector('#minutes');
+const secondDisplay = document.querySelector('#seconds');
+const startButton = document.querySelector('#startButton');
+const statusDiv = document.querySelector('#status');
+const lessWork = document.querySelector('#lessWork');
+const moreWork = document.querySelector('#moreWork');
+const lessBreak = document.querySelector('#lessBreak');
+const moreBreak = document.querySelector('#moreBreak') ;
+const workLengthEl = document.querySelector('#workLength');
+const breakLengthEl = document.querySelector('#breakLength');
+const chime = document.querySelector('audio');
 
 workLengthEl.innerHTML = minutes;
 breakLengthEl.innerHTML = breakMinutes;
@@ -38,28 +38,28 @@ moreBreak.addEventListener('click', function(){
 });
 
 
-function timesUp() {
+timesUp = () => {
     chime.play();
     statusDiv.innerHTML = 'On Break';
-    var breakTimer = breakMinutes * 60000;
+    let breakTimer = breakMinutes * 60000;
     display(breakTimer);
     setTimeout(getToWork, breakMinutes * 60000);
 }
 
-function display(timer){
-    var doStuff = setInterval(function () {//display countdown to break
+display = (timer) => {
+    let doStuff = setInterval( () => {//display countdown to break
         if (timer > 0) {
             timer -= 1000;//take 1 sec off the clock
-            var minutesTracker = Math.floor(timer / 60000).toString();
+            let minutesTracker = Math.floor(timer / 60000).toString();
             if (minutesTracker.length === 1) {//maintain 00:00 format
-                var temp = minutesTracker.split('');
+                let temp = minutesTracker.split('');
                 temp.unshift('0');
                 minutesTracker = temp.join('');
             }
             minuteDisplay.innerHTML = minutesTracker;
             secondsTracker = Math.floor(timer / 1000 - minutesTracker * 60).toString();
             if (secondsTracker.length === 1) {//maintain 00:00 format
-                var temp = secondsTracker.split('');
+                let temp = secondsTracker.split('');
                 temp.unshift('0');
                 secondsTracker = temp.join('');
             }
@@ -71,16 +71,16 @@ function display(timer){
     }, 1000);
 }
 
-function reset(){
+reset = () => {
     location.reload();
 }
-function getToWork() {
+getToWork = () => {
     minuteDisplay.innerHTML = minutes;
     startButton.removeEventListener('click', getToWork);//prevent multiple calls
     startButton.innerHTML = '<i class="fa fa-refresh"></i>';
     startButton.addEventListener('click', reset)
     statusDiv.innerHTML = 'In Session';
-    var workTimer = minutes * 60000;
+    let workTimer = minutes * 60000;
     display(workTimer);
     setTimeout(timesUp, minutes * 60000);
 }
