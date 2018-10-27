@@ -19,21 +19,21 @@ secondDisplay.innerHTML = '00';
 minuteDisplay.innerHTML = '00';
 
 lessWork.addEventListener('click', function(){
-    if(minutes === 1)return;
-    minutes--;
+    if(minutes <= 5)return;
+    minutes-= 5;
     workLengthEl.innerHTML = minutes;
 });
 moreWork.addEventListener('click', function(){
-    minutes++;
+    minutes+= 5;
     workLengthEl.innerHTML = minutes;
 });
 lessBreak.addEventListener('click', function(){
-    if(breakMinutes === 1)return;
-    breakMinutes--;
+    if(breakMinutes <= 5)return;
+    breakMinutes-= 5;
     breakLengthEl.innerHTML = breakMinutes;
 });
 moreBreak.addEventListener('click', function(){
-    breakMinutes++;
+    breakMinutes+= 5;
     breakLengthEl.innerHTML = breakMinutes;
 });
 
